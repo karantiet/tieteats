@@ -1,97 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login and Signup Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-    .container {
-      max-width: 400px;
-      margin: 50px auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-    .signup-form {
-      display: none;
-    }
-    .show-signup {
-      display: block;
-    }
-    .show-login {
-      display: none;
-    }
-  </style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+	<!-- Bootstrap theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h2>Login</h2>
-    <form action="login.php" method="post" class="login-form show-login">
-      <input type="text" name="username" placeholder="Username" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="submit" value="Login">
-      <p>Don't have an account? <a href="#" class="toggle-form">Signup</a></p>
-    </form>
-    
-    <h2>Signup</h2>
-    <form action="signup.php" method="post" class="signup-form">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="submit" value="Signup">
-      <p>Already have an account? <a href="#" class="toggle-form">Login</a></p>
-    </form>
-  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const toggleLinks = document.querySelectorAll('.toggle-form');
-      toggleLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const loginForm = document.querySelector('.login-form');
-          const signupForm = document.querySelector('.signup-form');
-          if (loginForm.classList.contains('show-login')) {
-            loginForm.classList.remove('show-login');
-            loginForm.classList.add('signup-form');
-            signupForm.classList.remove('signup-form');
-            signupForm.classList.add('show-signup');
-          } else {
-            signupForm.classList.remove('show-signup');
-            signupForm.classList.add('login-form');
-            loginForm.classList.remove('login-form');
-            loginForm.classList.add('show-login');
-          }
-        });
-      });
-    });
-  </script>
+<div class="navbar navbar-default">
+<div class="navbar-header">
+  <a class="navbar-brand" >Thapar Eats</a>
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+  </button>
+</div>
+</div>
+<br>
+<div class="container">	
+  <form name="registration_form" id="registration_form" method="post" action="#" enctype="multipart/form-data" >
+  <div class="row">
+
+	<div class="col-sm-4">
+		<div class="form-group">
+	      <label for="email">Email</label>
+		  <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
+		</div>
+		
+		<div class="form-group">
+	      <label for="password" >Password</label>
+		  <input type="password" name="password" id="password" class="form-control"  placeholder="Enter your password">
+		</div>
+		<button type="button" id="register" name="register" class="btn btn-success">Register Now</button>
+	</div><!-- end col -->
+	</form>
+	<form name="login_form" id="login_form" method="post" action="#" enctype="multipart/form-data" >
+	<div class="col-sm-4">
+		<div class="form-group">
+	      <label for="email">Email</label>
+		  <input type="text" name="login_email" id="login_email" class="form-control" placeholder="Enter your email">
+		</div>
+		
+		<div class="form-group">
+	      <label for="password">Password</label>
+		  <input type="password" name="login_password" id="login_password" class="form-control"  placeholder="Enter your password">
+		</div>
+		<button type="button" id="login" name="login" class="btn btn-success">Login</button>
+	</div><!-- end col -->
+	
+  </div><!--  end row -->		
+  </form>
+</div>
+<br>
+<center>Developed by Karan</center>
 </body>
+	<script type="module">
+	  // Import the functions you need from the SDKs you need
+	  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+	  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+	  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+	  // TODO: Add SDKs for Firebase products that you want to use
+	  // https://firebase.google.com/docs/web/setup#available-libraries
+
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  const firebaseConfig = {
+		apiKey: "AIzaSyCdcTEfECIiHZq68G1F1m3nv0KRiYovblQ",
+		authDomain: "thapar-eats-4bab0.firebaseapp.com",
+		projectId: "thapar-eats-4bab0",
+		storageBucket: "thapar-eats-4bab0.appspot.com",
+		messagingSenderId: "562509441002",
+		appId: "1:562509441002:web:31580369b6eb0ba3c17493"
+	  };
+
+	  // Initialize Firebase
+	  const app = initializeApp(firebaseConfig);
+	  const analytics = getAnalytics(app);
+	  const auth = getAuth();
+	  console.log(app);
+	  console.log(app);
+
+	  
+
+	  //----- New Registration code start	  
+	  document.getElementById("register").addEventListener("click", function() {
+		  var email =  document.getElementById("email").value;
+		  var password = document.getElementById("password").value;
+		  //For new registration
+		  createUserWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+		    location.replace("/home.html");
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    // ..
+		    console.log(errorMessage);
+		    alert(error);
+		  });		  		  
+	  });
+	  //----- End
+
+	  //----- Login code start	  
+	  document.getElementById("login").addEventListener("click", function() {
+		  var email =  document.getElementById("login_email").value;
+		  var password = document.getElementById("login_password").value;
+
+		  signInWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+			location.replace("/home.html");
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    console.log(errorMessage);
+		    alert(errorMessage);
+		  });		  		  
+	  });
+	</script>
 </html>
