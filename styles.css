@@ -46,11 +46,52 @@ body {
   }
   
   /* NAVBAR SECTION */
+  .navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 0 10vw;
+    z-index: 9;
+    background: var(--accent-color);
+}
+.nav-extras{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 1rem;
+}
+.cart{
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--secondary-text-color);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: .5s;
+}.cart{
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--secondary-text-color);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: .5s;
+}
+
   .navbar-expand-lg {
     background-color: #000000;
     z-index: 2;
     height: 74px;
   }
+
   
   .navbar-brand {
     font-family: "elinga", "myFirstFont", "Roboto";
@@ -364,7 +405,8 @@ body {
     font-size: 0.7rem;
     border-radius: 50%;
     background-color: #000000;
-    top: 1rem;
+    top: 2rem;
+    margin-top: 20px;
     right: 0px;
     color: white;
   }
@@ -868,7 +910,7 @@ body {
   }
   
   *::-webkit-scrollbar-thumb {
-    background-color: rgb(248, 243, 243);
+    background-color: black;
     border: 1px solid white;
   }
   
@@ -1048,6 +1090,7 @@ body {
   }
   #shoppingclass{
   position: relative;
+  margin-top: 10px;
   }
   #zero{
   position: relative !important;
