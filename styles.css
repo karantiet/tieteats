@@ -868,7 +868,7 @@ body {
   }
   
   *::-webkit-scrollbar-thumb {
-    background-color: black;
+    background-color: rgb(248, 243, 243);
     border: 1px solid white;
   }
   
