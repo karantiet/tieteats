@@ -232,10 +232,7 @@ $(document).ready(function () {
 function openWhatsapp() {
   // console.log($('#address'));
 
-  if ($("#address")[0].value === "") {
-    alert("Please Enter Address");
-    return;
-  } else {
+  if (1) {
     let total = 0;
     let address = $("#address")[0].value;
     let note = $("#note")[0].value;
