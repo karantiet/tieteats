@@ -264,3 +264,4 @@ function openWhatsapp() {
     window.open("https://wa.me/919988449004?text=" + wTxtEncoded);
   }
 }
+
